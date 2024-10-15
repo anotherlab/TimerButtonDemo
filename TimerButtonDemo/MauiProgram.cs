@@ -13,7 +13,7 @@ namespace TimerButtonDemo
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                    fonts.AddFont("SHOWG.TTF", "Showcard Gothic");
+                    fonts.AddFont("BAKINGSAUCE.otf", "BakingSauce");
                 });
 
 #if DEBUG

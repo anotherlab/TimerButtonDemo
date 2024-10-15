@@ -103,7 +103,7 @@ public class TimerButtonDrawable : IDrawable
         PointF centerOfCircle = new(width / 2, height / 2);
 
         // Draw the circle
-        canvas.FillColor = this.ButtonColor;
+        canvas.FillColor = ButtonColor;
         canvas.FillCircle(centerOfCircle, diameter / 2);
 
         // draw percentage as an arc and number of seconds left

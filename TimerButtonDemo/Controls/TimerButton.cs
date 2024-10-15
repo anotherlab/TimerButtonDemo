@@ -306,11 +306,15 @@ public class TimerButton : GraphicsView
     #endregion
 
 
+    #region Events
+
     // Allow the caller to subscribe to a TimerExpired event
     public event EventHandler<EventArgs>? TimerExpired;
 
     // Allow the caller to subscribe to a TimerTapped event
     public event EventHandler<EventArgs>? TimerTapped;
+
+    #endregion
 
     // Define the drawing context for this control
     TimerButtonDrawable TimerButtonDrawable { get; set; }
@@ -319,6 +323,7 @@ public class TimerButton : GraphicsView
     {
         Drawable = TimerButtonDrawable = new TimerButtonDrawable();
 
+        // Lets add a tap gesture recognizer to the button to make it quasi-interactive
         GestureRecognizers.Add(new TapGestureRecognizer
         {
             Command = new Command(() =>
@@ -352,13 +357,13 @@ public class TimerButton : GraphicsView
     {
         _startTime = DateTime.Now;
         _cancellationTokenSource = new();
-        Color color = ButtonColor;
 
         while (!_cancellationTokenSource.Token.IsCancellationRequested)
         {
             TimeSpan elapsedTime = DateTime.Now - _startTime;
             int secondsRemaining = (int)(DelayTime - elapsedTime.TotalSeconds);
 
+            // If times up, cancel the token and raise the TimerExpired event
             if (secondsRemaining <= 0)
             {
                 Progress = 0;
@@ -386,11 +391,10 @@ public class TimerButton : GraphicsView
             if (ColorCycle)
             {
                 // Do a color shift by incrementing the hue
-                var hue = color.GetHue();
+                var hue = ButtonColor.GetHue();
                 hue += 0.01f;
                 hue %= 1.0f;
-                color = color.WithHue(hue);
-                ButtonColor = color;
+                ButtonColor = ButtonColor.WithHue(hue);
             }
         }
     }

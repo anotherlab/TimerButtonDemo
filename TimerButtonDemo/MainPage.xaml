@@ -11,15 +11,15 @@
             <Image
                 Aspect="AspectFit"
                 HeightRequest="185"
-                SemanticProperties.Description="AI rendered timert button"
+                SemanticProperties.Description="AI rendered timer button"
                 Source="jungle_timer.png" />
 
 
             <Button
-                x:Name="CounterBtn"
-                Clicked="OnCounterClicked"
+                x:Name="StartTimerBtn"
+                Clicked="OnStartTimerClicked"
                 HorizontalOptions="Fill"
-                SemanticProperties.Hint="Counts the number of times you click"
+                SemanticProperties.Hint="Starts the timer buttons"
                 Text="Start the timer" />
 
             <controls:TimerButton
