@@ -2,6 +2,7 @@
 
 public class TimerButtonDrawable : IDrawable
 {
+    #region Properties
     // The dimensions of the drawable
     public int Width { get; set; } = 0;
     public int Height { get; set; } = 0;
@@ -35,7 +36,10 @@ public class TimerButtonDrawable : IDrawable
 
     // If true, the number of seconds left will be displayed, otherwise an X will be displayed
     public bool ShowCountdown { get; set; } = true;
+    #endregion
 
+
+    #region Helper Methods
 
     /// <summary>
     /// Used to get the widest value of the delay time
@@ -74,6 +78,7 @@ public class TimerButtonDrawable : IDrawable
 
         return fontSize;
     }
+    #endregion
 
     // implement the IDrawable.Draw method
     public void Draw(ICanvas canvas, RectF dirtyRect)

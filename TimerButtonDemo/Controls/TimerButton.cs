@@ -190,7 +190,8 @@ public class TimerButton : GraphicsView
 
     #endregion
 
-    #region Events
+    // Define the methods to update drawable properties
+    #region UI Updates
     void UpdateDelayTime()
     {
         if (TimerButtonDrawable == null)
@@ -371,6 +372,7 @@ public class TimerButton : GraphicsView
 
             // Set progress to the remainder of elapsedTime.TotalSecond divided by DelayTime
             var progress = elapsedTime.TotalSeconds % DelayTime;
+
             // divide by DelayTime to get a value between 0 and 1
             progress /= DelayTime;
 
