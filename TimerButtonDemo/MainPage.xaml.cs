@@ -6,14 +6,6 @@
         {
             InitializeComponent();
             // As a workaround, we can set the font name. we'll need to update this when the issue is fixed
-//#if ANDROID
-//            TimerBtn.FontFamily = "BAKINGSAUCE.otf";
-//#elif IOS || MACCATALYST
-//            TimerBtn.FontFamily = "BakingSauce";
-//#elif WINDOWS
-//            // This doesn't work on UWP
-//            //TimerBtn.FontFamily = "BAKINGSAUCE.otf#BakingSauce";
-//#endif
 
 #if ANDROID
             TimerBtn.FontFamily = "SHOWG.TTF";

@@ -145,7 +145,6 @@ public class TimerButtonDrawable : IDrawable
                     {
                         // Using a custom font on UWP will throw an exception
                         Console.WriteLine(e.Message);
-                        throw;
                     }
 
                 }

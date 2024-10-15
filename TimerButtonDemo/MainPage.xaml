@@ -11,7 +11,7 @@
             <Image
                 Aspect="AspectFit"
                 HeightRequest="185"
-                SemanticProperties.Description="dot net bot in a race car number eight"
+                SemanticProperties.Description="AI rendered timert button"
                 Source="jungle_timer.png" />
 
 
@@ -21,19 +21,19 @@
                 HorizontalOptions="Fill"
                 SemanticProperties.Hint="Counts the number of times you click"
                 Text="Start the timer" />
-            
+
             <controls:TimerButton
                 x:Name="TimerBtn"
-                DelayTime="10"
-                HeightRequest="80"
-                FontSize="20"
                 AutoFontSize="True"
+                DelayTime="10"
+                FontSize="20"
+                HeightRequest="80"
                 HideWhenDone="True"
                 HorizontalOptions="Center"
                 TimerExpired="TimerBtn_TimerExpired"
                 TimerTapped="TimerBtn_TimerTapped"
                 WidthRequest="80" />
-            
+
             <controls:TimerButton
                 x:Name="TimerBtn2"
                 ColorCycle="True"
@@ -45,7 +45,7 @@
                 TimerExpired="TimerBtn_TimerExpired"
                 TimerTapped="TimerBtn_TimerTapped"
                 WidthRequest="80" />
-            
+
             <controls:TimerButton
                 x:Name="TimerBtn3"
                 AutoFontSize="False"
@@ -57,7 +57,7 @@
                 TimerExpired="TimerBtn_TimerExpired"
                 TimerTapped="TimerBtn_TimerTapped"
                 WidthRequest="40" />
-            
+
             <Label
                 x:Name="TimerLbl"
                 HorizontalOptions="Center"
