@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TimerButtonDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:TimerButtonDemo.Controls"
+    Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+            <Image
+                Aspect="AspectFit"
+                HeightRequest="185"
+                SemanticProperties.Description="dot net bot in a race car number eight"
+                Source="jungle_timer.png" />
+
+
+            <Button
+                x:Name="CounterBtn"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Fill"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Text="Start the timer" />
+            
+            <controls:TimerButton
+                x:Name="TimerBtn"
+                DelayTime="10"
+                HeightRequest="80"
+                FontSize="20"
+                AutoFontSize="True"
+                HideWhenDone="True"
+                HorizontalOptions="Center"
+                TimerExpired="TimerBtn_TimerExpired"
+                TimerTapped="TimerBtn_TimerTapped"
+                WidthRequest="80" />
+            
+            <controls:TimerButton
+                x:Name="TimerBtn2"
+                ColorCycle="True"
+                DelayTime="30"
+                HeightRequest="80"
+                HideWhenDone="false"
+                HorizontalOptions="Center"
+                ShowCountdown="False"
+                TimerExpired="TimerBtn_TimerExpired"
+                TimerTapped="TimerBtn_TimerTapped"
+                WidthRequest="80" />
+            
+            <controls:TimerButton
+                x:Name="TimerBtn3"
+                AutoFontSize="False"
+                DelayTime="30"
+                HeightRequest="40"
+                HideWhenDone="false"
+                HorizontalOptions="Center"
+                ShowCountdown="False"
+                TimerExpired="TimerBtn_TimerExpired"
+                TimerTapped="TimerBtn_TimerTapped"
+                WidthRequest="40" />
+            
+            <Label
+                x:Name="TimerLbl"
+                HorizontalOptions="Center"
+                Text="Timer button not running" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
