@@ -1,5 +1,5 @@
 # TimerButtonDemo
-<img src="./screenshots/android.png" style="width: 50%; height: 50%">
+<img src="./screenshots/android.png" style="width: 50%; height: 50%; border: 0.5rem black;">
 
 
 A .NET 9 MAUI demo to illustrate how to create a control using the GraphicsView
