@@ -1,4 +1,6 @@
-﻿namespace TimerButtonDemo.Drawables;
+﻿using System.Globalization;
+
+namespace TimerButtonDemo.Drawables;
 
 public class TimerButtonDrawable : IDrawable
 {
@@ -20,7 +22,7 @@ public class TimerButtonDrawable : IDrawable
     public float FontSize { get; set; } = 18.0f;
 
     // Currently not supported correctly, see https://github.com/dotnet/maui/issues/9252
-    // There is a workaround in the MainPage.xaml.cs file
+    // There is a workaround in the MainPage.xaml.cs file, but only works for Android
     public string? FontFamily { get; set; }
     public Color ButtonColor { get; set; } = Colors.Blue;
     public Color ProgressColor { get; set; } = Colors.White;
@@ -28,11 +30,11 @@ public class TimerButtonDrawable : IDrawable
     // The size of the stroke for the progress arc
     public float StrokeSize { get; set; } = 4.0f;
 
-    public int SecondsLeft { get; set; } = 0;
-    public double Progress { get; set; } = 0;
+    public int SecondsLeft { get; set; }
+    public double Progress { get; set; }
 
     // If true, the drawable will not be drawn when the progress is 0
-    public bool HideWhenDone { get; set; } = false;
+    public bool HideWhenDone { get; set; }
 
     // If true, the number of seconds left will be displayed, otherwise an X will be displayed
     public bool ShowCountdown { get; set; } = true;
@@ -49,7 +51,7 @@ public class TimerButtonDrawable : IDrawable
     /// <returns>A string of "M" with the number of characters equal to the number of digits of delay</returns>
     private static string GetDelayString(decimal delay)
     {
-        var len = Math.Abs(delay).ToString().Length;
+        var len = Math.Abs(delay).ToString(CultureInfo.CurrentCulture).Length;
 
         return "MMMMMMMMMMM"[..len];
     }
@@ -83,7 +85,7 @@ public class TimerButtonDrawable : IDrawable
     // implement the IDrawable.Draw method
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {
-        // If the progress is 0 and we are hiding when done, then we don't need to draw anything
+        // If the progress is 0, and we are hiding when done, then we don't need to draw anything
         if (HideWhenDone && Progress <= 0)
         {
             return;
@@ -129,8 +131,6 @@ public class TimerButtonDrawable : IDrawable
                     canvas.FontSize = FontSize;
                     try
                     {
-                        var textToDisplay = SecondsLeft.ToString();
-
                         if (FontFamily != null)
                         {
                             var font = new Microsoft.Maui.Graphics.Font(FontFamily);

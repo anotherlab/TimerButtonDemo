@@ -81,7 +81,7 @@ public class TimerButton : GraphicsView
 
     // define the bindable properties
     #region BindableProperties
-    public static readonly BindableProperty DelayTimeProperty = BindableProperty.Create(nameof(DelayTime), typeof(int), typeof(TimerButton), 30,
+    private static readonly BindableProperty DelayTimeProperty = BindableProperty.Create(nameof(DelayTime), typeof(int), typeof(TimerButton), 30,
         propertyChanged: (bindableObject, oldValue, newValue) =>
         {
             if (newValue != null && bindableObject is TimerButton button)
@@ -99,7 +99,7 @@ public class TimerButton : GraphicsView
             }
         });
 
-    public static readonly BindableProperty ColorCycleProperty = BindableProperty.Create(nameof(ColorCycle), typeof(bool), typeof(TimerButton), false,
+    private static readonly BindableProperty ColorCycleProperty = BindableProperty.Create(nameof(ColorCycle), typeof(bool), typeof(TimerButton), false,
         propertyChanged: (bindableObject, oldValue, newValue) =>
         {
             if (newValue != null && bindableObject is TimerButton button)
@@ -126,7 +126,7 @@ public class TimerButton : GraphicsView
             }
         });
 
-    public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(TimerButton), null,
+    private static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(TimerButton), null,
         propertyChanged: (bindableObject, oldValue, newValue) =>
         {
             if (newValue != null && bindableObject is TimerButton button)
@@ -135,7 +135,7 @@ public class TimerButton : GraphicsView
             }
         });
 
-    public static readonly BindableProperty SecondsLeftProperty = BindableProperty.Create(nameof(SecondsLeft), typeof(int), typeof(TimerButton), 0,
+    private static readonly BindableProperty SecondsLeftProperty = BindableProperty.Create(nameof(SecondsLeft), typeof(int), typeof(TimerButton), 0,
         propertyChanged: (bindableObject, oldValue, newValue) =>
         {
             if (newValue != null && bindableObject is TimerButton button)
@@ -144,7 +144,7 @@ public class TimerButton : GraphicsView
             }
         });
 
-    public static readonly BindableProperty OffsetProperty = BindableProperty.Create(nameof(Offset), typeof(int), typeof(TimerButton), 0,
+    private static readonly BindableProperty OffsetProperty = BindableProperty.Create(nameof(Offset), typeof(int), typeof(TimerButton), 0,
         propertyChanged: (bindableObject, oldValue, newValue) =>
         {
             if (newValue != null && bindableObject is TimerButton button)
@@ -153,7 +153,7 @@ public class TimerButton : GraphicsView
             }
         });
 
-    public static readonly BindableProperty ProgressProperty = BindableProperty.Create(nameof(Progress), typeof(double), typeof(TimerButton), 0.0,
+    private static readonly BindableProperty ProgressProperty = BindableProperty.Create(nameof(Progress), typeof(double), typeof(TimerButton), 0.0,
         propertyChanged: (bindableObject, oldValue, newValue) =>
         {
             if (newValue != null && bindableObject is TimerButton button)
@@ -162,7 +162,7 @@ public class TimerButton : GraphicsView
             }
         });
 
-    public static readonly BindableProperty ProgressColorProperty = BindableProperty.Create(nameof(ProgressColor), typeof(Color), typeof(TimerButton), Colors.White,
+    private static readonly BindableProperty ProgressColorProperty = BindableProperty.Create(nameof(ProgressColor), typeof(Color), typeof(TimerButton), Colors.White,
         propertyChanged: (bindableObject, oldValue, newValue) =>
         {
             if (newValue != null && bindableObject is TimerButton button)
@@ -171,7 +171,7 @@ public class TimerButton : GraphicsView
             }
         });
 
-    public static readonly BindableProperty ButtonColorProperty = BindableProperty.Create(nameof(ButtonColor), typeof(Color), typeof(TimerButton), Colors.Green,
+    private static readonly BindableProperty ButtonColorProperty = BindableProperty.Create(nameof(ButtonColor), typeof(Color), typeof(TimerButton), Colors.Green,
         propertyChanged: (bindableObject, oldValue, newValue) =>
         {
             if (newValue != null && bindableObject is TimerButton button)
@@ -192,112 +192,109 @@ public class TimerButton : GraphicsView
 
     // Define the methods to update drawable properties
     #region UI Updates
-    void UpdateDelayTime()
+    
+    private bool DrawableIsDefined()
     {
-        if (TimerButtonDrawable == null)
-            return;
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        return (TimerButtonDrawable != null);
+    }
+    private void UpdateDelayTime()
+    {
+        // if (TimerButtonDrawable == null)
+        //     return;
 
+        if (!DrawableIsDefined()) return;
+        
         TimerButtonDrawable.DelayTime = DelayTime;
 
         Invalidate();
     }
 
-    void UpdateShowCountdown()
+    private void UpdateShowCountdown()
     {
-        if (TimerButtonDrawable == null)
-            return;
+        if (!DrawableIsDefined()) return;
 
         TimerButtonDrawable.ShowCountdown = ShowCountdown;
 
         Invalidate();
     }
 
-    void UpdateColorCycle()
+    private void UpdateColorCycle()
     {
-        if (TimerButtonDrawable == null)
-            return;
+        if (!DrawableIsDefined()) return;
 
         Invalidate();
     }
-    void UpdateAutoFontSize()
+    private void UpdateAutoFontSize()
     {
-        if (TimerButtonDrawable == null)
-            return;
+        if (!DrawableIsDefined()) return;
 
         TimerButtonDrawable.AutoFontSize = AutoFontSize;
 
         Invalidate();
     }
 
-    void UpdateFontSize()
+    private void UpdateFontSize()
     {
-        if (TimerButtonDrawable == null)
-            return;
+        if (!DrawableIsDefined()) return;
 
         TimerButtonDrawable.FontSize = FontSize;
 
         Invalidate();
     }
 
-    void UpdateFontFamily()
+    private void UpdateFontFamily()
     {
-        if (TimerButtonDrawable == null)
-            return;
+        if (!DrawableIsDefined()) return;
 
         TimerButtonDrawable.FontFamily = FontFamily;
 
         Invalidate();
     }
-    void UpdateSecondsLeft()
+    private void UpdateSecondsLeft()
     {
-        if (TimerButtonDrawable == null)
-            return;
+        if (!DrawableIsDefined()) return;
 
         TimerButtonDrawable.SecondsLeft = SecondsLeft;
 
         Invalidate();
     }
-    void UpdateOffset()
+    private void UpdateOffset()
     {
-        if (TimerButtonDrawable == null)
-            return;
+        if (!DrawableIsDefined()) return;
 
         TimerButtonDrawable.Offset = Offset;
 
         Invalidate();
     }
-    void UpdateProgress()
+    private void UpdateProgress()
     {
-        if (TimerButtonDrawable == null)
-            return;
+        if (!DrawableIsDefined()) return;
 
         TimerButtonDrawable.Progress = Progress;
 
         Invalidate();
     }
-    void UpdateProgressColor()
+    private void UpdateProgressColor()
     {
-        if (TimerButtonDrawable == null)
-            return;
+        if (!DrawableIsDefined()) return;
 
         TimerButtonDrawable.ProgressColor = ProgressColor;
 
         Invalidate();
     }
 
-    void UpdateButtonColor()
+    private void UpdateButtonColor()
     {
-        if (TimerButtonDrawable == null)
-            return;
+        if (!DrawableIsDefined()) return;
 
         TimerButtonDrawable.ButtonColor = ButtonColor;
 
         Invalidate();
     }
-    void UpdateHideWhenDone()
+    private void UpdateHideWhenDone()
     {
-        if (TimerButtonDrawable == null)
-            return;
+        if (!DrawableIsDefined()) return;
 
         TimerButtonDrawable.HideWhenDone = HideWhenDone;
 
@@ -323,7 +320,7 @@ public class TimerButton : GraphicsView
     {
         Drawable = TimerButtonDrawable = new TimerButtonDrawable();
 
-        // Lets add a tap gesture recognizer to the button to make it quasi-interactive
+        // Add a tap gesture recognizer to the button to make it quasi-interactive
         GestureRecognizers.Add(new TapGestureRecognizer
         {
             Command = new Command(() =>
@@ -367,7 +364,8 @@ public class TimerButton : GraphicsView
             if (secondsRemaining <= 0)
             {
                 Progress = 0;
-                _cancellationTokenSource.Cancel();
+                //_cancellationTokenSource.Cancel();
+                await _cancellationTokenSource.CancelAsync();
                 RaiseTimerExpired();
                 return;
             }
@@ -404,6 +402,6 @@ public class TimerButton : GraphicsView
     /// </summary>
     void RaiseTimerExpired()
     {
-        TimerExpired?.Invoke(this, new EventArgs());
+        TimerExpired?.Invoke(this, EventArgs.Empty);
     }
 }

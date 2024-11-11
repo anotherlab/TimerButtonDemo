@@ -2,7 +2,7 @@
 {
     public partial class MainPage : ContentPage
     {
-        int NumberOfTaps = 0;
+        private int _numberOfTaps;
 
         public MainPage()
         {
@@ -28,6 +28,7 @@
             TimerLbl.Text = "Timer Started";
             //await TimerBtn.StartTimerAsync();
 
+            // Fire off all three timer buttons
             var tasks = new List<Task>
             {
                 TimerBtn.StartTimerAsync(),
@@ -53,7 +54,7 @@
             TimerBtn2.StopTimer();
             TimerBtn3.StopTimer();
 
-            TimerLbl.Text = $"Timer Tapped: {++NumberOfTaps}";
+            TimerLbl.Text = $"Timer Tapped: {++_numberOfTaps}";
         }
     }
 
