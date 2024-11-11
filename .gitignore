@@ -252,7 +252,7 @@ orleans.codegen.cs
 Generated_Code/
 
 # Backup & report files from converting an old project file
-# to a newer Visual Studio version. Backup files are not needed,
+# to a newer Visual Studio version. Backup files are not needd,
 # because we have git ;-)
 _UpgradeReport_Files/
 Backup*/
@@ -396,3 +396,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Common IntelliJ Platform excludes
+.idea/
+
+# MacOS Finder directory settings
+.DS_Store

@@ -1,0 +1,5 @@
+﻿<Solution>
+  <Project Path="TimerButtonDemo.csproj" Type="Classic C#">
+    <Configuration Solution="Debug|Any CPU" Project="Debug|Any CPU|Deploy" />
+  </Project>
+</Solution>

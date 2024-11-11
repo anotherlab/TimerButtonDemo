@@ -40,7 +40,11 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
-
+	
+	<PropertyGroup>
+		<MtouchLink>SDKOnly</MtouchLink>
+	</PropertyGroup>
+	
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -62,6 +66,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\BAKINGSAUCE.otf" />
 	  <None Remove="Resources\Images\jungle_timer.png" />
+	  <None Remove="TimerButtonDemo.slnx" />
 	</ItemGroup>
 
 	<ItemGroup>
