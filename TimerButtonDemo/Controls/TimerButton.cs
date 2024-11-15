@@ -355,6 +355,7 @@ public class TimerButton : GraphicsView
         _startTime = DateTime.Now;
         _cancellationTokenSource = new();
 
+        // Run until this loop cancels the token or the token is cancelled elsewhere
         while (!_cancellationTokenSource.Token.IsCancellationRequested)
         {
             TimeSpan elapsedTime = DateTime.Now - _startTime;
@@ -364,9 +365,10 @@ public class TimerButton : GraphicsView
             if (secondsRemaining <= 0)
             {
                 Progress = 0;
-                //_cancellationTokenSource.Cancel();
+
                 await _cancellationTokenSource.CancelAsync();
                 RaiseTimerExpired();
+                
                 return;
             }
 
