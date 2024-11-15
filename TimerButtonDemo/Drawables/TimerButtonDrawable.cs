@@ -66,6 +66,7 @@ public class TimerButtonDrawable : IDrawable
     /// <returns>The font size to fit the area</returns>
     private float CalcFontSize(ICanvas canvas, RectF dirtyRect, Microsoft.Maui.Graphics.Font font)
     {
+        // Get widest text string for the number of digits in the delay time
         var textToDisplay = GetDelayString(DelayTime);
 
         // Get the size of the text to display using a large font size
@@ -75,7 +76,7 @@ public class TimerButtonDrawable : IDrawable
         // Shrink the rectangle by 20% to give some padding
         RectF rect = dirtyRect.Inflate(-0.2f * dirtyRect.Width, -0.2f * dirtyRect.Height);
 
-        // Calculate the font size to fit the rectangle
+        // Calculate the font size to fit the rectangle of the drawable
         var fontSize = 128f * Math.Min(rect.Width / size.Width, rect.Height / size.Height);
 
         return fontSize;
